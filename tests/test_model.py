@@ -7,7 +7,7 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
 data = fetch_california_housing()
-X_train, X_test, y_train, y_test = train_test_split(data.data, data.test, test_size=0.3, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.3, random_state=42)
 
 thresholds = {
     "mae":0.6,
