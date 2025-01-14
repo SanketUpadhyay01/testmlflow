@@ -1,0 +1,35 @@
+name: Simple MLFLOW Pipeline
+
+on:
+    push:
+        branches:
+            - main
+            - feature/my_feature
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    build-and-test:
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v2
+
+          - name: set up python
+            uses: actions/setup-python@v2
+            with:
+                python-version: '3.9'
+
+          - name: Install dependencies
+            run: 
+                pip install -r requirements.txt
+
+          - name: Run model
+            run: 
+                python src/model.py
+
+          - name: Run tests
+            run:
+                pytest
